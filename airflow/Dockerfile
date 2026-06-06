@@ -68,7 +68,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 # ── entrypoint ────────────────────────────────────────────────────────────────
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint.sh && sed -i 's/\r$//' /entrypoint.sh
 
 USER airflow
 WORKDIR ${AIRFLOW_HOME}
